@@ -1,0 +1,38 @@
+package webapp.entity;
+
+import javax.persistence.Column;
+import javax.persistence.Entity;
+
+@Entity
+public class Audit {
+
+	@Column(name = "operation")
+	private String operation;
+
+	@Column(name = "timestamp")
+	private long timestamp;
+
+	public String getOperation() {
+		return operation;
+	}
+
+	public void setOperation(String operation) {
+		this.operation = operation;
+	}
+
+	public long getTimestamp() {
+		return timestamp;
+	}
+
+	public void setTimestamp(long timestamp) {
+		this.timestamp = timestamp;
+	}
+
+	@Override
+	public String toString() {
+		return "Audit [operation=" + operation + ", timestamp=" + timestamp + "]";
+	}
+	
+	
+
+}

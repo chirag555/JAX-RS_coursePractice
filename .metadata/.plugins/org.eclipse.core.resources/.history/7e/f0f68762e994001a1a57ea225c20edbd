@@ -1,0 +1,63 @@
+package webapp.entity;
+
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.EntityListeners;
+import javax.persistence.PrePersist;
+import javax.persistence.PreRemove;
+import javax.persistence.PreUpdate;
+
+import org.springframework.data.annotation.CreatedBy;
+import org.springframework.data.annotation.CreatedDate;
+import org.springframework.data.annotation.LastModifiedBy;
+import org.springframework.data.annotation.LastModifiedDate;
+import org.springframework.data.jpa.domain.support.AuditingEntityListener;
+
+@Entity
+
+public class Audit {
+	
+    private String operation;
+    private String timestamp;
+
+	@Column(name = "createddate")
+	@CreatedDate
+	private String createdDate;
+
+	@Column(name = "modifieddate")
+	@LastModifiedDate
+	private String modifiedDate;
+
+	@Column(name = "createdby")
+	@CreatedBy
+	private String createdBy;
+
+	@Column(name = "modifiedby")
+	@LastModifiedBy
+	private String modifiedBy;
+	
+	@PrePersist
+	public void onPrePersist() {		
+		
+	}
+
+	@PreUpdate
+	public void onPreUpdate() {
+		
+	}
+
+	@PreRemove
+	public void onPreRemove() {
+		
+	}
+	  
+	
+	
+
+	@Override
+	public String toString() {
+		return "Audit [createdDate=" + createdDate + ", modifiedDate=" + modifiedDate + ", createdBy=" + createdBy
+				+ ", modifiedBy=" + modifiedBy + "]";
+	}
+
+}

@@ -1,0 +1,8 @@
+package api.showroom.resources;
+
+
+
+
+public interface ProductRepo  extends CrudRepository<productEntity,> {
+
+}

@@ -1,0 +1,17 @@
+package webapp.entity;
+
+import javax.persistence.Column;
+import javax.persistence.Entity;
+
+@Entity
+public class Audit {
+
+	@Column(name = "operation")
+	private String operation;
+
+	@Column(name = "timestamp")
+	private long timestamp;
+	
+	
+
+}

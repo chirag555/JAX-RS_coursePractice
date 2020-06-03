@@ -1,0 +1,65 @@
+package webapp.entity;
+
+import java.util.Date;
+
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.Id;
+import javax.persistence.Table;
+import webapp.config.Auditable;
+
+@Entity
+@Table(name = "posts")
+public class Post extends Auditable<String> {
+	
+	@Id
+	@Column(name = "id")
+	int postId;
+	@Column(name = "title")
+	String title;
+	@Column(name = "body")
+	String body;
+	
+	public Post() {
+
+	}
+
+	public Post(int postId, String title, String body) {
+
+		this.postId = postId;
+		this.title = title;
+		this.body = body;
+		//this.author = author;
+	}
+
+	public int getPostId() {
+		return postId;
+	}
+
+	public void setPostId(int postId) {
+		this.postId = postId;
+	}
+
+	public String getTitle() {
+		return title;
+	}
+
+	public void setTitle(String title) {
+		this.title = title;
+	}
+
+	public String getBody() {
+		return body;
+	}
+
+	public void setBody(String body) {
+		this.body = body;
+	}
+
+	public static void main(String a[]) {
+		
+		Post post=new Post();
+		
+		
+	}
+}

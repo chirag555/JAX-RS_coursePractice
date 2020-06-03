@@ -1,0 +1,63 @@
+package webapp.entity;
+
+import java.util.Date;
+
+import javax.persistence.PrePersist;
+import javax.persistence.PreRemove;
+import javax.persistence.PreUpdate;
+
+public class Author {
+
+	private String name;
+	private String operation;
+	private long timeStamp;
+
+	public Author() {
+	}
+
+	public Author(String name) {
+		this.name = name;
+	}
+
+	public String getName() {
+		return name;
+	}
+
+	public void setName(String name) {
+		this.name = name;
+	}
+	
+	@PrePersist
+	public void onPrePersist() {
+		setOperation("Insert");
+		setTimeStamp((new Date()).getTime());
+
+	}
+
+	@PreUpdate
+	public void onPreUpdate() {
+		setOperation("Update");
+		setTimeStamp((new Date()).getTime());
+	}
+
+	@PreRemove
+	public void onPreRemove() {
+		setOperation("Remove");
+		setTimeStamp((new Date()).getTime());
+	}
+
+	
+
+	public void setOperation(String operation) {
+		this.operation = operation;
+	}
+
+	public String getTimeStamp() {
+		return timeStamp;
+	}
+
+	public void setTimeStamp(long l) {
+		this.timeStamp = l;
+	}
+
+}

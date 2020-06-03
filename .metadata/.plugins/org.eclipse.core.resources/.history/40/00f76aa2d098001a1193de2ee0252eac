@@ -1,0 +1,9 @@
+package api.showroom.resources;
+
+import org.springframework.data.repository.CrudRepository;
+
+import webapp.entity.Post;
+
+public interface ProductRepo  extends CrudRepository<productEntity,> {
+
+}

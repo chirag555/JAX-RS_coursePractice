@@ -1,0 +1,8 @@
+package api.showroom.resources;
+
+
+import webapp.entity.Post;
+
+public interface ProductRepo  extends CrudRepository<productEntity,> {
+
+}

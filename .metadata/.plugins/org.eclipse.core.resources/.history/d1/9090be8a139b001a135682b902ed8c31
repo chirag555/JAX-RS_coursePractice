@@ -1,0 +1,43 @@
+package webapp.services;
+
+import java.util.ArrayList;
+import java.util.List;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+import webapp.entity.Post;
+import webapp.repository.postsRepository;
+
+@Service
+public class postsService {
+	
+	@Autowired
+	private postsRepository repo;
+	
+	public List<Post> getPosts() {
+		List<Post> posts= new ArrayList<>();
+	for(Post post:repo.findAll())
+	{
+		posts.add(post);
+	}
+	return posts;
+	}
+
+	public Post getPosts(int id) {
+		System.out.println(repo.toString());
+		return repo.findById(id).get();
+	}
+
+	public void addPost(Post listElement) {
+		repo.save(listElement);
+		
+	}
+
+	public void updatePost(Post post) {		
+		repo.save(post);
+	}
+
+	public void deletePost(int id) {
+	repo.deleteById(id);
+	}
+
+}

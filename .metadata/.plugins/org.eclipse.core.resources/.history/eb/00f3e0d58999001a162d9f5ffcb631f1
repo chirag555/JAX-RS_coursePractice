@@ -1,0 +1,64 @@
+package webapp.entity;
+
+import java.util.Date;
+
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.PrePersist;
+import javax.persistence.PreRemove;
+import javax.persistence.PreUpdate;
+@Audited
+
+@Entity
+
+//@Table(name="Audit");
+public class Audit {
+
+	@Column(name = "operation")
+	private String operation;
+
+	@Column(name = "timestamp")
+	private long timestamp;
+
+	public String getOperation() {
+		return operation;
+	}
+
+	public void setOperation(String operation) {
+		this.operation = operation;
+	}
+
+	public long getTimestamp() {
+		return timestamp;
+	}
+
+	public void setTimestamp(long timestamp) {
+		this.timestamp = timestamp;
+	}
+	
+	 @PrePersist
+	    public void onPrePersist() {
+		 setOperation("Insert");
+	        setTimestamp((new Date()).getTime());
+	    }
+	      
+	    @PreUpdate
+	    public void onPreUpdate() {
+	    	setOperation("Update");
+	        setTimestamp((new Date()).getTime());
+	    }
+	      
+	    @PreRemove
+	    public void onPreRemove() {
+	    	setOperation("delete");
+	        setTimestamp((new Date()).getTime());
+	    }
+
+	@Override
+	public String toString() {
+		return "Audit [operation=" + operation + ", timestamp=" + timestamp + "]";
+	}
+	
+	
+
+}

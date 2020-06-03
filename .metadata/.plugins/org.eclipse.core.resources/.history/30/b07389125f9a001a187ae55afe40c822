@@ -1,0 +1,44 @@
+package webapp.entity;
+
+import java.util.Date;
+
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.Id;
+import javax.persistence.Table;
+
+import lombok.AccessLevel;
+import lombok.Getter;
+import lombok.Setter;
+import webapp.config.Auditable;
+@Getter(AccessLevel.PUBLIC)
+@Setter(AccessLevel.PUBLIC)
+@Entity
+@Table(name = "posts")
+public class Post extends Auditable<String> {
+
+	@Id
+	@Column(name = "id")
+	int postId;
+	@Column(name = "title")
+	String title;
+	@Column(name = "body")
+	String body;
+	
+	
+	public Post() {
+		//Post post=new Post();
+		
+	}
+
+	public Post(int postId, String title, String body) {
+
+		this.postId = postId;
+		this.title = title;
+		this.body = body;
+		//this.author = author;
+	}
+	
+	
+	
+}
